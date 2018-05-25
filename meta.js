@@ -31,7 +31,7 @@ module.exports = {
       return templateVersion
     },
   },
-  
+
   prompts: {
     name: {
       when: 'isNotTest',
@@ -133,6 +133,11 @@ module.exports = {
       type: 'confirm',
       message: 'Setup e2e tests with Nightwatch?',
     },
+    cucumber: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: 'Setup Cucumber tests with TestCafe?',
+    },
     autoInstall: {
       when: 'isNotTest',
       type: 'list',
@@ -170,6 +175,7 @@ module.exports = {
     'test/unit/setup.js': "unit && runner === 'jest'",
     'test/e2e/**/*': 'e2e',
     'src/router/**/*': 'router',
+    'features/**/*': 'cucumber',
   },
   complete: function(data, { chalk }) {
     const green = chalk.green
